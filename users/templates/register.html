@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Cadastro
+{% endblock %}
+
+{% block content %}
+    <h1>Cadastro de Usuários</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.errors }}
+                    
+                    <!-- Exibe os campos básicos -->
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                    
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+
+                    <!-- Exibe campos sensíveis apenas para superusuários -->
+                    {% if user.is_superuser %}
+                        {{ form.is_staff.label_tag }}
+                        {{ form.is_staff }}
+                        
+                        {{ form.is_superuser.label_tag }}
+                        {{ form.is_superuser }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

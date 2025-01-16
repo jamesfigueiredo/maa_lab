@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#">Segurança em Aplicações - MASS ASSIGNMENT ATTACK</a>
+      {% if user.is_authenticated %}
+        <p>
+          <h4>
+          <i class="bi bi-person-circle"> </i>
+          Olá, <strong>{{ user.username }}</strong>
+          </h4>
+        </p>
+      {% endif %}
+    </div>
+  </nav>
